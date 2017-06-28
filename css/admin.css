@@ -3,7 +3,7 @@
  * Admin CSS.
  */
 
-#wp-hubspot-forms-settings-tab-contents {
+#wp-hubspot-cta-settings-tab-contents {
    min-height: 100px;
    margin: 0 0 0 0px;
    padding: 20px;
@@ -11,7 +11,7 @@
    border: 1px solid #ddd;
 }
 
-#wp-hubspot-forms-settings-tab-contents .form-table {
+#wp-hubspot-cta-settings-tab-contents .form-table {
   clear: none;
 }
 
