@@ -22,7 +22,7 @@
     _do_render_cta: function(co) {
       return co.replace(/\[hubspotcta ([^\]]*)\]/g, function(a, b) {
         var baseUrl = (_hspt_preview_base_url !== undefined) ? _hspt_preview_base_url + '/' : '/';
-        return '<div><iframe class="hubspot-cta-embed" title="' + tinymce.DOM.encode(b) + '" style="border:none" width="300" height="100" src="' + baseUrl + 'index.php?hubspot_cta_embed_plugin=' + encodeURIComponent(b) + '" frameborder="0"></iframe></div>';
+        return '<iframe class="hubspot-cta-embed" title="' + tinymce.DOM.encode(b) + '" style="border:none" width="300" height="100" src="' + baseUrl + 'index.php?hubspot_cta_embed_plugin=' + encodeURIComponent(b) + '" frameborder="0"></iframe>';
       });
     },
 
@@ -32,11 +32,11 @@
         return n ? tinymce.DOM.decode(n[1]) : '';
       };
 
-      return co.replace(/(?:<div([^>]*)>)*(<iframe[^>]+>)(?:<\/iframe><\/div>)*/g, function(a, div, iframe) {
+      return co.replace(/(<iframe[^>]+>)<\/iframe>/g, function(a, iframe) {
         var cls = getAttr(iframe, 'class');
 
         if (cls.indexOf('hubspot-cta-embed') != -1) {
-          return '<div' + div + '>[hubspotcta ' + tinymce.trim(getAttr(iframe, 'title')) + ']</div>';
+          return '[hubspotcta ' + tinymce.trim(getAttr(iframe, 'title')) + ']';
         }
 
         return a;
